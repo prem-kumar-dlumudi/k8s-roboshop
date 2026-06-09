@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: roboshop
+  #this labels are replicaset labels, these labels are used to identify the pods which are created by this deployment
+  labels:
+    project: roboshop
+    component: mongodb
+    tier: db 
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      project: roboshop
+      component: mongodb
+      tier: db
+
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: mongodb
+        tier: db
+
+    spec:
+      containers:
+      - name: mongodb
+        image: prem1440docker/mongodb:1.0.0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: mongodb
+    tier: db
+spec:
+  selector:
+  #labels are used to select the pods for which this service will be created
+    project: roboshop
+    component: mongodb
+    tier: db
+  ports:
+  - protocol: TCP 
+    port: 27017 #port on which the service will be exposed
+    targetPort: 27017 #container port to which the traffic will be forwarded
