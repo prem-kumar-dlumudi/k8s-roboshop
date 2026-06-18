@@ -61,14 +61,12 @@ spec:
 
         livenessProbe:
                 httpGet:
-                    httpGet:
                     path: /health
                     port: 8080
-                    initialDelaySeconds: 30
-                    periodSeconds: 10
-                    failureThreshold: 2
+                initialDelaySeconds: 30
+                periodSeconds: 10
+                failureThreshold: 2            
                     
-          
         envFrom:
         - configMapRef:
             name: catalogue
