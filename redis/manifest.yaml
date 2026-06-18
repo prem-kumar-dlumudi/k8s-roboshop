@@ -48,4 +48,4 @@ spec:
   ports:
   - protocol: TCP 
     port: 6379 #port on which the service will be exposed
-    targetPort: 63 #container port to which the traffic will be forwarded
+    targetPort: 6379 #container port to which the traffic will be forwarded
