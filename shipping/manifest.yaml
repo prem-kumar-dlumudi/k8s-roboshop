@@ -61,10 +61,10 @@ spec:
           initialDelaySeconds: 15 
         startupProbe:
            httpGet:
-           path: /healthz
-           port: 8080
-           failureThreshold: 20
-           periodSeconds: 10  
+            path: /health
+            port: 8080
+           initialDelaySeconds: 10
+           periodSeconds: 5 
 
         livenessProbe:
                 httpGet:
